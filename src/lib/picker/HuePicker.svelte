@@ -2,9 +2,9 @@
 	import Picker from './Picker.svelte';
 
 	export let hue: number;
-	let value: number;
-  
-  $: hue = Math.round(value / 100 * 360);
+	let value: number = (hue / 360) * 100;
+
+	$: hue = Math.round((value / 100) * 360);
 
 	let style = `background: linear-gradient(
 			to right,
@@ -24,6 +24,4 @@
 		);`;
 </script>
 
-<div class="w-72">
-	<Picker {style} bind:value />
-</div>
+<Picker {style} bind:value />
