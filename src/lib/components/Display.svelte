@@ -2,7 +2,7 @@
 	export let style: string | undefined;
 </script>
 
-<div class="alpha-bg rounded-lg shadow border overflow-hidden">
+<div class="alpha-bg rounded-lg shadow border overflow-hidden border-surface-400">
 	<div {style} class="w-full h-60 md:h-96" />
 </div>
 

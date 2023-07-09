@@ -41,12 +41,12 @@
 	on:mouseleave={onHoldUp}
 	on:mouseup={onHoldUp}
 	on:mousemove={onMouseMove}
-	class="flex rounded w-full md:p-1"
+	class="flex rounded w-full"
 >
 	<div class:alpha-bg={alphaBg} class="grow flex">
-		<div bind:this={container} class="grow rounded border h-7 relative" {style}>
+		<div bind:this={container} class="grow rounded border border-surface-400 h-7 relative" {style}>
 			<div
-				class="h-[110%] absolute bg-white border-black p-0.5 border-2 rounded -translate-x-1/2 top-1/2 -translate-y-1/2"
+				class="h-[120%] absolute bg-surface-100 border-surface-600 p-0.5 border-2 rounded -translate-x-1/2 top-1/2 -translate-y-1/2"
 				style={thumbStyle}
 			/>
 		</div>

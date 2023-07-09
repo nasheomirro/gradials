@@ -3,34 +3,36 @@
 	import EditColor from './EditColorPallete.svelte';
 	import EditColorButtons from './EditColorButtons.svelte';
 	import { store } from '$lib/app/store';
+	import Close from '$lib/components/icons/Close.svelte';
+	import Input from '$lib/components/Input.svelte';
 
 	export let circle: Circle;
 	let activeColor: number = 0;
 </script>
 
-<li class="border p-3 rounded grid grid-cols-1 md:grid-cols-3 gap-4">
-	<div class="w-full flex flex-col">
-		<div class="mb-3">
+<li
+	class="border relative shadow bg-surface-100 border-surface-400 p-3 md:p-4 rounded flex flex-col sm:flex-row gap-2 sm:gap-10"
+>
+	<div class="w-full flex flex-col sm:w-1/3">
+		<div class="mb-4 grid grid-cols-2 gap-x-4 gap-y-0.5 items-center">
+			<span class="font-bold text-surface-400 opacity-60">X</span>
+			<span class="font-bold text-surface-400 opacity-60">Y</span>
+			<Input tw="w-full text-center" bind:value={circle.position.x} />
+			<Input tw="w-full text-center" bind:value={circle.position.y} />
+		</div>
+
+		<EditColorButtons bind:circle bind:activeColor />
+		<div>
 			<button
 				on:click={() => store.remove(circle.id)}
-				class="p-2 w-full bg-red-200 border hover:bg-red-300 transition-colors rounded font-bold"
-				>remove</button
+				class="w-5 absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-surface-100 hover:bg-error-500 border hover:bg-red-300 transition-colors aspect-square rounded-full font-bold"
+				><Close /></button
 			>
 		</div>
-		<div class="mb-4 flex items-center">
-			<label class="pr-3 font-bold text-gray-400 text-center" for="{circle.id}-pos">Position:</label
-			>
-			<input
-				class="w-full border p-1 text-center"
-				id="${circle.id}-pos"
-				bind:value={circle.position}
-			/>
-		</div>
-		<EditColorButtons bind:circle bind:activeColor />
 	</div>
 
 	{#key activeColor}
-		<div class="md:col-span-2">
+		<div class="sm:w-2/3">
 			<EditColor bind:color={circle.colors[activeColor]} />
 		</div>
 	{/key}

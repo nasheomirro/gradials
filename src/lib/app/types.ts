@@ -16,6 +16,9 @@ export type Color = {
 
 export type Circle = {
 	id: string;
-	position: string;
+	position: {
+    x: number,
+    y: number
+  };
 	colors: Color[];
 };

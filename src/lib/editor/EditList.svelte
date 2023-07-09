@@ -9,4 +9,4 @@
 	{/each}
 </ul>
 
-<button on:click={store.add} class="w-full p-3 border">Add Circle</button>
+<button on:click={store.add} class="w-full p-3 border border-surface-400">Add Circle</button>

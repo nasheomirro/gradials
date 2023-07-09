@@ -8,10 +8,13 @@ const createStore = () => {
 
 	const createDefault = (): Circle => ({
 		id: nanoid(),
-		position: '50% 50%',
+		position: {
+      x: 50,
+      y: 50
+    },
 		colors: [
 			{
-				value: getHSLString({ h: 0, s: 40, l: 40, a: 100 }),
+				value: getHSLString({ h: 0, s: 70, l: 50, a: 100 }),
 				stopAt: 0
 			},
 			{
