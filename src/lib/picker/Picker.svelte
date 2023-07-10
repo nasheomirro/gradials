@@ -1,5 +1,5 @@
 <script lang="ts">
-	/** a number from 1 - 100, this maps the shtick with the container */
+	/** a number from 0 - 100, this maps the shtick with the container */
 	export let value: number;
 	export let style: string;
 	export let alphaBg: boolean = false;

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { store } from '$lib/app/store';
+	import Button from '$lib/components/Button.svelte';
 	import EditCircle from './EditCircle.svelte';
 </script>
 
@@ -9,4 +10,6 @@
 	{/each}
 </ul>
 
-<button on:click={store.add} class="w-full p-3 border border-surface-400">Add Circle</button>
+<Button class="w-full p-2" on:click={store.add}
+	><span class="font-bold">Create Radial Gradient</span></Button
+>

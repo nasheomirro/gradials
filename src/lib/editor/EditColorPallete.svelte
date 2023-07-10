@@ -15,22 +15,22 @@
 <div class="flex flex-col w-full gap-1.5">
 	<div class="flex items-center gap-2.5">
 		<span class="font-bold text-surface-400 opacity-60 w-4 text-center">H</span>
-		<Input tw="w-12 text-center" bind:value={HSL.h} />
+		<Input bind:value={HSL.h} />
 		<HuePicker bind:hue={HSL.h} />
 	</div>
 	<div class="flex items-center gap-2.5">
 		<span class=" font-bold text-surface-400 opacity-60 w-4 text-center">S</span>
-		<Input tw="w-12 text-center" bind:value={HSL.s} />
+		<Input bind:value={HSL.s} />
 		<SaturatePicker HSLColor={HSL} bind:saturation={HSL.s} />
 	</div>
 	<div class="flex items-center gap-2.5">
 		<span class="font-bold text-surface-400 opacity-60 w-4 text-center">L</span>
-		<Input tw="w-12 text-center" bind:value={HSL.l} />
+		<Input bind:value={HSL.l} />
 		<LightnessPicker HSLColor={HSL} bind:lightness={HSL.l} />
 	</div>
 	<div class="flex items-center gap-2.5">
 		<span class=" font-bold text-surface-400 opacity-60 w-4 text-center">A</span>
-		<Input tw="w-12 text-center" bind:value={HSL.a} />
+		<Input bind:value={HSL.a} />
 		<AlphaPicker HSLColor={HSL} bind:alpha={HSL.a} />
 	</div>
 </div>

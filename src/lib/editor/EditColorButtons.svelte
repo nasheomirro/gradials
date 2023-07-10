@@ -14,12 +14,13 @@
 				<button
 					on:click={() => (activeColor = i)}
 					style={`background: ${color.value};`}
-					class={twJoin('grow rounded outline-primary-600 outline-2', activeColor === i ? 'outline' : '')}
+					class={twJoin('grow rounded outline-primary-600 outline-2')}
+					class:outline={(activeColor === i)}
 				>
 					<span class="sr-only">select color {i + 1}</span>
 				</button>
 			</div>
-			<Input tw="w-full border p-1 text-center" bind:value={color.stopAt} />
+			<Input class="w-full border p-1 text-center" bind:value={color.stopAt} />
 		</div>
 	{/each}
 </div>
