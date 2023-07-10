@@ -2,14 +2,12 @@
 	import Picker from './Picker.svelte';
 
 	export let hue: number;
-
 	let value: number;
 
 	// hide cyclic dependency from compiler
 	// note: this workaround only works for primitive values
 	const onHueChange = () => {
-    console.log("might run twice");
-    value = (hue / 360) * 100;
+		value = (hue / 360) * 100;
 	};
 	$: if (hue !== null) onHueChange();
 	$: hue = Math.round((value / 100) * 360);
