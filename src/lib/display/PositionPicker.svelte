@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Circle } from '$lib/app/types';
+	import { limit } from '$lib/utils';
 	import { onMount } from 'svelte';
 
 	export let position: Circle['position'];
@@ -40,8 +41,8 @@
 		const rawPercentageX = (mouseX / displayWidth) * 100;
 		const rawPercentageY = (mouseY / displayHeight) * 100;
 
-		const percentageX = rawPercentageX > 100 ? 100 : rawPercentageX < 0 ? 0 : rawPercentageX;
-		const percentageY = rawPercentageY > 100 ? 100 : rawPercentageY < 0 ? 0 : rawPercentageY;
+		const percentageX = limit(rawPercentageX, 0, 100);
+		const percentageY = limit(rawPercentageY, 0, 100);
 
 		position.x = parseFloat(percentageX.toFixed(2));
 		position.y = parseFloat(percentageY.toFixed(2));

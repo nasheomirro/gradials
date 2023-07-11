@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { limit } from '$lib/utils';
 	import { onMount } from 'svelte';
 
 	/** a number from 0 - 100, this maps the shtick with the container */
@@ -40,7 +41,7 @@
 		const mouseX = x - container.getBoundingClientRect().left;
 		const rawPercentage = (mouseX / containerWidth) * 100;
 		// have upper and lower limit to 0 and 100
-		const percentage = rawPercentage > 100 ? 100 : rawPercentage < 0 ? 0 : rawPercentage;
+		const percentage = limit(rawPercentage, 0, 100);
 		value = parseFloat(percentage.toFixed(2));
 	}
 

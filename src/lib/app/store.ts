@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { writable } from 'svelte/store';
 import { getHSLString } from './utils';
 import { browser } from '$app/environment';
+import { limit } from '$lib/utils';
 
 const createStore = () => {
 	const { subscribe, set, update } = writable<Circle[]>([], (set) => {
@@ -39,9 +40,28 @@ const createStore = () => {
 		]
 	});
 
+	const move = (id: string, by: -1 | 1) => {
+		update((circles) => {
+			let prevIndex = circles.findIndex((circle) => circle.id === id);
+			if (prevIndex !== undefined) {
+				let newIndex = limit(prevIndex + by, 0, circles.length - 1);
+				let arr = [...circles];
+
+				let element = arr[prevIndex];
+				arr.splice(prevIndex, 1);
+				arr.splice(newIndex, 0, element);
+
+				return arr;
+			}
+
+			return circles;
+		});
+	};
+
 	const add = () => {
 		update((circles) => [...circles, createDefault()]);
 	};
+
 	const remove = (id: string) => {
 		update((circles) => circles.filter((circle) => circle.id !== id));
 	};
@@ -50,6 +70,7 @@ const createStore = () => {
 		subscribe,
 		set,
 		add,
+		move,
 		remove
 	};
 };
