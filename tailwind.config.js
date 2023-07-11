@@ -13,7 +13,8 @@ export default {
       error: colors.rose,
 		},
 		fontFamily: {
-			sans: ['Open Sans', ...defaultTheme.fontFamily.sans]
+			sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+      mono: defaultTheme.fontFamily.mono,
 		},
 		extend: {}
 	},

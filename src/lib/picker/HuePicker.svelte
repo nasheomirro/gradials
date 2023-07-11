@@ -6,9 +6,9 @@
 
 	// hide cyclic dependency from compiler
 	// note: this workaround only works for primitive values
-	const onHueChange = () => {
+	function onHueChange() {
 		value = (hue / 360) * 100;
-	};
+	}
 	$: if (hue !== null) onHueChange();
 	$: hue = Math.round((value / 100) * 360);
 

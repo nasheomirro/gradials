@@ -37,5 +37,5 @@ export const getBackgroundStyle = (circles: Circle[]) => {
 
 		const rule = `radial-gradient(circle at ${x}% ${y}%, ${colors})${comment} `;
 		return str + rule;
-	}, 'background-image: ');
+	}, '');
 };

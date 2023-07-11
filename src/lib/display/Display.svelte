@@ -1,29 +1,31 @@
 <script lang="ts">
 	import { store } from '$lib/app/store';
+	import Button from '$lib/components/Button.svelte';
+	import CopyBlock from './CopyBlock.svelte';
 	import PositionPicker from './PositionPicker.svelte';
-	export let style: string | undefined;
+
+	export let style: string;
 
 	let hidePoints = false;
-  let display: HTMLDivElement;
+	let display: HTMLDivElement;
 </script>
 
-<div>
-	<div class="flex justify-end mb-2">
-		<button
-			on:click={() => (hidePoints = !hidePoints)}
-			class="text-sm px-2.5 font-semibold outline-surface-600 transition-colors hover:bg-primary-200 p-0.5 rounded bg-primary-100 border-surface-400 border"
-			>toggle</button
-		>
-	</div>
-	<div bind:this={display} class="alpha-bg relative rounded-lg shadow border border-surface-400">
-		<div {style} class="w-full h-60 md:h-96 rounded-lg" />
-		<div class:hidden={hidePoints}>
-			{#each $store as circle (circle.id)}
-				<PositionPicker {display} bind:position={circle.position} />
-			{/each}
-		</div>
+<div class="flex justify-end mb-2">
+	<Button on:click={() => (hidePoints = !hidePoints)} class="w-auto px-1.5 py-1 text-xs"
+		>toggle</Button
+	>
+</div>
+
+<div bind:this={display} class="alpha-bg relative rounded-lg mb-2 shadow border border-surface-400">
+	<div style={`background-image: ${style}`} class="w-full h-60 md:h-96 rounded-lg" />
+	<div class:hidden={hidePoints}>
+		{#each $store as circle (circle.id)}
+			<PositionPicker {display} bind:position={circle.position} />
+		{/each}
 	</div>
 </div>
+
+<CopyBlock {style} />
 
 <style>
 	/* responsible for the alpha effect */
