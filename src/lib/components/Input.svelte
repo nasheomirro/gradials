@@ -18,3 +18,13 @@
 	bind:value
 	{...rest}
 />
+
+<style>
+	input[type='number']::-webkit-outer-spin-button,
+	input[type='number']::-webkit-inner-spin-button,
+	input[type='number'] {
+		-webkit-appearance: none;
+		margin: 0;
+		-moz-appearance: textfield !important;
+	}
+</style>

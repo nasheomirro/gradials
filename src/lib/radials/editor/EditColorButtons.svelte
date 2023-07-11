@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { Circle } from '$lib/app/types';
+	import type { Radial } from '$lib/types';
 	import Input from '$lib/components/Input.svelte';
 	import { twJoin } from 'tailwind-merge';
 
 	export let activeColor: number;
-	export let circle: Circle;
+	export let circle: Radial;
 </script>
 
 <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HSLColor } from '$lib/app/types';
-	import { getHSLString } from '$lib/app/utils';
+	import type { HSLColor } from '$lib/types';
+	import { getHSLString } from '$lib/utils';
 	import Picker from './Picker.svelte';
 
 	export let HSLColor: HSLColor;

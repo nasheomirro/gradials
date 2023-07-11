@@ -9,16 +9,16 @@ export type HSLColor = {
 	a: number;
 };
 
-export type Color = {
+export type RadialColor = {
 	value: string;
 	stopAt: number;
 };
 
-export type Circle = {
+export type Radial = {
 	id: string;
 	position: {
-    x: number,
-    y: number
-  };
-	colors: Color[];
+		x: number;
+		y: number;
+	};
+	colors: RadialColor[];
 };

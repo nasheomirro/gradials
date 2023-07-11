@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { store } from '$lib/app/store';
+	import { radials } from '$lib/radials/radials';
 	import Button from '$lib/components/Button.svelte';
 	import { twJoin } from 'tailwind-merge';
 	import CopyBlock from './CopyBlock.svelte';
@@ -30,7 +30,7 @@
 >
 	<div style={`background-image: ${style}`} class="w-full h-60 md:h-96 rounded-lg" />
 	<div class:hidden={hidePoints}>
-		{#each $store as circle (circle.id)}
+		{#each $radials as circle (circle.id)}
 			<PositionPicker {display} bind:position={circle.position} />
 		{/each}
 	</div>

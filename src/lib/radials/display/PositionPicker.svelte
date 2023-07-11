@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { Circle } from '$lib/app/types';
+	import type { Radial } from '$lib/types';
 	import { limit } from '$lib/utils';
 	import { onMount } from 'svelte';
 
-	export let position: Circle['position'];
+	export let position: Radial['position'];
 	export let display: HTMLDivElement;
 
 	let isHolding = false;

@@ -9,8 +9,9 @@
 
 <div
 	class:hidden={!style}
-	class="w-full relative p-3 md:p-4 font-bold bg-surface-700 text-surface-200 rounded border border-surface-400 text-sm font-mono"
+	class="w-full relative p-3 md:p-4 font-bold bg-surface-700 text-surface-300 rounded border border-surface-400 text-sm font-mono"
 >
+	<span class="block text-surface-400"> // you can set this as your background </span>
 	{style}
 	<button on:click={onCopy} class="absolute bottom-2 right-2 w-4 aspect-square hover:scale-110">
 		<span class="sr-only">copy style</span>

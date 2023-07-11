@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { Color } from '$lib/app/types';
-	import { getHSLObject, getHSLString } from '$lib/app/utils';
+	import type { RadialColor } from '$lib/types';
 	import Input from '$lib/components/Input.svelte';
-	import AlphaPicker from '$lib/picker/AlphaPicker.svelte';
-	import HuePicker from '../picker/HuePicker.svelte';
-	import LightnessPicker from '../picker/LightnessPicker.svelte';
-	import SaturatePicker from '../picker/SaturatePicker.svelte';
+	import AlphaPicker from '$lib/pickers/AlphaPicker.svelte';
+	import HuePicker from '$lib/pickers/HuePicker.svelte';
+	import LightnessPicker from '$lib/pickers/LightnessPicker.svelte';
+	import SaturatePicker from '$lib/pickers/SaturatePicker.svelte';
+	import { getHSLObject, getHSLString } from '$lib/utils';
 
-	export let color: Color;
+	export let color: RadialColor;
 	let HSL = getHSLObject(color);
 	$: color.value = getHSLString(HSL);
 </script>

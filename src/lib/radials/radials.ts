@@ -1,16 +1,15 @@
-import type { Circle } from './types';
+import type { Radial } from '../types';
 import { nanoid } from 'nanoid';
 import { writable } from 'svelte/store';
-import { getHSLString } from './utils';
 import { browser } from '$app/environment';
-import { limit } from '$lib/utils';
+import { getHSLString, limit } from '$lib/utils';
 
-const createStore = () => {
-	const { subscribe, set, update } = writable<Circle[]>([], (set) => {
+const createRadials = () => {
+	const { subscribe, set, update } = writable<Radial[]>([], (set) => {
 		if (browser) {
 			const storedItem = localStorage.getItem('last-save');
 			if (storedItem) {
-				const circles = JSON.parse(storedItem) as Circle[];
+				const circles = JSON.parse(storedItem) as Radial[];
 				set(circles);
 			}
 		}
@@ -22,7 +21,7 @@ const createStore = () => {
 		}
 	});
 
-	const createDefault = (): Circle => ({
+	const createDefault = (): Radial => ({
 		id: nanoid(),
 		position: {
 			x: 50,
@@ -75,4 +74,4 @@ const createStore = () => {
 	};
 };
 
-export const store = createStore();
+export const radials = createRadials();
