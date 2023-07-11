@@ -9,5 +9,5 @@
 
 <div class="container max-w-screen-lg p-5 md:p-10 mx-auto">
 	<Display {style} />
-  <CircleList />
+	<CircleList />
 </div>

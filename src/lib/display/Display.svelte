@@ -11,7 +11,7 @@
 </script>
 
 <div class="flex justify-end mb-2">
-	<Button on:click={() => (hidePoints = !hidePoints)} class="w-auto px-1.5 py-1 text-xs"
+	<Button on:click={() => (hidePoints = !hidePoints)} class="w-auto px-1.5 py-1 text-xs font-bold"
 		>toggle</Button
 	>
 </div>
