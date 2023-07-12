@@ -15,7 +15,7 @@
 </script>
 
 <li
-	class="border relative shadow bg-surface-100 border-surface-400 p-3 md:p-4 rounded flex flex-col sm:flex-row gap-2 sm:gap-10"
+	class="border relative shadow bg-surface-100 border-surface-400 py-6 px-3 md:p-4 rounded flex flex-col sm:flex-row gap-2 sm:gap-10"
 >
 	<Button
 		on:click={() => radials.remove(radial.id)}
