@@ -9,15 +9,15 @@ const createRadials = () => {
 		if (browser) {
 			const storedItem = localStorage.getItem('last-save');
 			if (storedItem) {
-				const circles = JSON.parse(storedItem) as Radial[];
-				set(circles);
+				const radials = JSON.parse(storedItem) as Radial[];
+				set(radials);
 			}
 		}
 	});
 
-	subscribe((circles) => {
+	subscribe((radials) => {
 		if (browser) {
-			localStorage.setItem('last-save', JSON.stringify(circles));
+			localStorage.setItem('last-save', JSON.stringify(radials));
 		}
 	});
 
@@ -27,6 +27,7 @@ const createRadials = () => {
 			x: 50,
 			y: 50
 		},
+    shape: 'ellipse',
 		colors: [
 			{
 				value: getHSLString({ h: 0, s: 70, l: 50, a: 100 }),
@@ -40,11 +41,11 @@ const createRadials = () => {
 	});
 
 	const move = (id: string, by: -1 | 1) => {
-		update((circles) => {
-			let prevIndex = circles.findIndex((circle) => circle.id === id);
+		update((radials) => {
+			let prevIndex = radials.findIndex((radial) => radial.id === id);
 			if (prevIndex !== undefined) {
-				let newIndex = limit(prevIndex + by, 0, circles.length - 1);
-				let arr = [...circles];
+				let newIndex = limit(prevIndex + by, 0, radials.length - 1);
+				let arr = [...radials];
 
 				let element = arr[prevIndex];
 				arr.splice(prevIndex, 1);
@@ -53,16 +54,16 @@ const createRadials = () => {
 				return arr;
 			}
 
-			return circles;
+			return radials;
 		});
 	};
 
 	const add = () => {
-		update((circles) => [...circles, createDefault()]);
+		update((radials) => [...radials, createDefault()]);
 	};
 
 	const remove = (id: string) => {
-		update((circles) => circles.filter((circle) => circle.id !== id));
+		update((radials) => radials.filter((radial) => radial.id !== id));
 	};
 
 	return {

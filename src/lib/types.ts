@@ -16,6 +16,7 @@ export type RadialColor = {
 
 export type Radial = {
 	id: string;
+  shape: 'circle' | 'ellipse'
 	position: {
 		x: number;
 		y: number;

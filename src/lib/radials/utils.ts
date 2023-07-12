@@ -1,18 +1,19 @@
 import type { Radial, RadialColor } from '../types';
 
-export const getBackgroundStyle = (circles: Radial[]) => {
-	return circles.reduce((str: string, circle: Radial, i) => {
-		const comment = i === circles.length - 1 ? ';' : ',';
-		const colors = circle.colors.reduce((str: string, color: RadialColor, i) => {
-			const comment = i === circle.colors.length - 1 ? '' : ',';
+export const getBackgroundStyle = (radials: Radial[]) => {
+	return radials.reduce((str: string, radial: Radial, i) => {
+		const comment = i === radials.length - 1 ? ';' : ',';
+		const colors = radial.colors.reduce((str: string, color: RadialColor, i) => {
+			const comment = i === radial.colors.length - 1 ? '' : ',';
 			return str + `${color.value} ${color.stopAt || 0}%${comment}`;
 		}, '');
 
-		let { x, y } = circle.position;
+    let shape = radial.shape;
+		let { x, y } = radial.position;
 		x = x || 0;
 		y = y || 0;
 
-		const rule = `radial-gradient(circle at ${x}% ${y}%, ${colors})${comment} `;
+		const rule = `radial-gradient(${shape} at ${x}% ${y}%, ${colors})${comment} `;
 		return str + rule;
 	}, '');
 };

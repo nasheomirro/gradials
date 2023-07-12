@@ -30,8 +30,8 @@
 >
 	<div style={`background-image: ${style}`} class="w-full h-60 md:h-96 rounded-lg" />
 	<div class:hidden={hidePoints}>
-		{#each $radials as circle (circle.id)}
-			<PositionPicker {display} bind:position={circle.position} />
+		{#each $radials as radial (radial.id)}
+			<PositionPicker {display} bind:position={radial.position} />
 		{/each}
 	</div>
 </div>
