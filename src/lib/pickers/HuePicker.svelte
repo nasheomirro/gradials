@@ -2,15 +2,6 @@
 	import Picker from './Picker.svelte';
 
 	export let hue: number;
-	let value: number;
-
-	// hide cyclic dependency from compiler
-	// note: this workaround only works for primitive values
-	function onHueChange() {
-		value = (hue / 360) * 100;
-	}
-	$: if (hue !== null) onHueChange();
-	$: hue = Math.round((value / 100) * 360);
 
 	let style = `background: linear-gradient(
 			to right,
@@ -30,4 +21,4 @@
 		);`;
 </script>
 
-<Picker {style} bind:value />
+<Picker {style} upperBound={360} bind:value={hue} />

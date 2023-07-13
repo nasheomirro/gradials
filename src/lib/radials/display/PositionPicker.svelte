@@ -2,9 +2,13 @@
 	import type { Radial } from '$lib/types';
 	import { limit } from '$lib/utils';
 	import { onMount } from 'svelte';
+	import { spring } from 'svelte/motion';
 
 	export let position: Radial['position'];
 	export let display: HTMLDivElement;
+
+	let percentages = spring<Radial['position'] | null>(null, { stiffness: 0.35, damping: 0.7 });
+	$: percentages.update(() => position);
 
 	let isHolding = false;
 
@@ -28,8 +32,8 @@
 	}
 
 	function onMouseDown(event: MouseEvent) {
-    event.preventDefault();
-    
+		event.preventDefault();
+
 		isHolding = true;
 		movePosition(event.clientX, event.clientY);
 	}
@@ -91,7 +95,7 @@
 		position.y = parseFloat(percentageY.toFixed(2));
 	}
 
-	$: style = `left: ${position.x}%; top: ${position.y}%`;
+	$: style = `left: ${$percentages?.x}%; top: ${$percentages?.y}%`;
 </script>
 
 <!-- TODO: look up accessibility for whatever this is -->

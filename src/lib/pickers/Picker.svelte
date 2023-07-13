@@ -1,19 +1,31 @@
 <script lang="ts">
 	import { limit } from '$lib/utils';
 	import { onMount } from 'svelte';
+	import { spring } from 'svelte/motion';
 
-	/** a number from 0 - 100, this maps the shtick with the container */
+	export let alphaBg: boolean = false;
 	export let value: number;
 	export let style: string;
-
-	/** add the alpha background image */
-	export let alphaBg: boolean = false;
-
+	export let upperBound = 100;
 	let container: HTMLDivElement;
+
+	/** the value used for positioning the picker */
+	let percentage = spring<number | null>(null, { stiffness: 0.3, damping: 0.8 });
+	/** the ID for the touch if one was started */
+	let touchId: number | null = null;
+	/** check if user is holding down the picker */
 	let isHolding: boolean = false;
 
-	/** for touch events */
-	let touchId: number | null = null;
+	$: percentage.update(() => (value / upperBound) * 100);
+
+	function pickColor(x: number) {
+		const containerWidth = container.offsetWidth;
+		const mouseX = x - container.getBoundingClientRect().left;
+		const rawPercentage = mouseX / containerWidth;
+		const fixedPercentage = limit(rawPercentage, 0, 1);
+
+		value = parseFloat((fixedPercentage * upperBound).toFixed(2));
+	}
 
 	function onMouseUp() {
 		isHolding = false;
@@ -32,8 +44,8 @@
 	}
 
 	function onMouseDown(event: MouseEvent) {
-    event.preventDefault();
-    
+		event.preventDefault();
+
 		isHolding = true;
 		pickColor(event.clientX);
 	}
@@ -77,17 +89,6 @@
 			window.removeEventListener('touchend', onTouchEnd);
 		};
 	});
-
-	function pickColor(x: number) {
-		const containerWidth = container.offsetWidth;
-		const mouseX = x - container.getBoundingClientRect().left;
-		const rawPercentage = (mouseX / containerWidth) * 100;
-		// have upper and lower limit to 0 and 100
-		const percentage = limit(rawPercentage, 0, 100);
-		value = parseFloat(percentage.toFixed(2));
-	}
-
-	$: thumbStyle = `left: ${value}%`;
 </script>
 
 <!-- TODO: look up accessibility for sliders -->
@@ -97,7 +98,7 @@
 			<div
 				on:touchstart={onTouchStart}
 				class="h-[120%] absolute bg-surface-100 border-surface-600 p-0.5 border-2 rounded -translate-x-1/2 top-1/2 -translate-y-1/2"
-				style={thumbStyle}
+				style={`left: ${$percentage}%;`}
 			/>
 		</div>
 	</div>
