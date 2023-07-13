@@ -8,6 +8,10 @@
 	$: style = getBackgroundStyle($radials);
 </script>
 
+<svelte:head>
+  <title>Create Radial Backgrounds</title>
+</svelte:head>
+
 <section class="container max-w-screen-lg px-4 md:px-10 md:pb-20 mx-auto">
 	<div class="py-4 flex sm:mb-2 justify-end">
 		<a

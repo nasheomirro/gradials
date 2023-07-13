@@ -32,6 +32,8 @@
 	}
 
 	function onMouseDown(event: MouseEvent) {
+    event.preventDefault();
+    
 		isHolding = true;
 		pickColor(event.clientX);
 	}

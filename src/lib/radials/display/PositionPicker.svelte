@@ -28,6 +28,8 @@
 	}
 
 	function onMouseDown(event: MouseEvent) {
+    event.preventDefault();
+    
 		isHolding = true;
 		movePosition(event.clientX, event.clientY);
 	}
