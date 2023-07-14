@@ -8,7 +8,7 @@
 	export let display: HTMLDivElement;
 
 	let percentages = spring<Radial['position'] | null>(null, { stiffness: 0.35, damping: 0.7 });
-	$: percentages.update(() => position);
+	$: percentages.update(() => ({ x: Number(position.x), y: Number(position.y) }));
 
 	let isHolding = false;
 

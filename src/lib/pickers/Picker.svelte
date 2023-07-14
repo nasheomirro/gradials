@@ -16,7 +16,7 @@
 	/** check if user is holding down the picker */
 	let isHolding: boolean = false;
 
-	$: percentage.update(() => (value / upperBound) * 100);
+	$: percentage.update(() => limit((value / upperBound) * 100, 0, 100));
 
 	function pickColor(x: number) {
 		const containerWidth = container.offsetWidth;
